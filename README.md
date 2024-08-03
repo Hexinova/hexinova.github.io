@@ -4,7 +4,7 @@
 - 💞️ I’m looking to collaborate on games
 - 📫 How to reach me dont even
 - 😄 Pronouns: he/him
-- ⚡ Fun fact: i like mangoes
+- ⚡ Fun fact: i like mangoes (they are the best fruit)
 
 <!---
 llexuris/llexuris is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
