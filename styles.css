@@ -8,8 +8,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full viewport height */
+    min-height: 100vh; /* Full viewport height */
     text-align: center; /* Center text alignment */
+}
+
+.container {
+    width: 80%; /* Adjust the width as needed */
+    max-width: 1200px; /* Max width to prevent it from stretching too wide */
 }
 
 /* Style for links and images */
