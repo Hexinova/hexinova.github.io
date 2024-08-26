@@ -1,60 +1,27 @@
-/* Import custom font */
-@font-face {
-    font-family: 'Proxima';
-    src: url('fonts/proxima.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 body {
     font-family: 'Proxima', sans-serif;
-    background: linear-gradient(135deg, #6a0dad, #000000); /* Purple to black gradient */
-    color: #333;
+    background-color: #000000; /* Black background */
+    color: #ffffff; /* White text color for better contrast */
     margin: 0;
     padding: 20px;
     cursor: none;
     overflow: hidden;
 }
 
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-/* Style the heading */
-h1 {
-    color: #2c3e50; /* Dark blue-gray color */
-    font-size: 36px; /* Large font size */
-    font-weight: bold; /* Bold text */
-    text-align: left; /* Align text to the left */
-    margin-bottom: 20px; /* Space below the heading */
-}
-
-/* Style the paragraph */
-p {
-    color: #7f8c8d; /* Medium gray color */
-    font-size: 18px; /* Slightly larger font size */
-    text-align: left; /* Align text to the left */
-    margin-top: 0; /* No space above the paragraph */
-}
-
-/* Style for links and images */
-a {
-    display: inline-block; /* Align images horizontally */
-    margin-right: 20px; /* Add space between images */
-}
-
-a img {
-    display: block; /* Ensure the image is block-level */
-    width: 150px; /* Set a specific width */
-    height: 150px; /* Set a specific height */
+/* Style for the programming language links */
+a.programming-link {
+    display: inline-block;
+    font-size: 24px;
+    color: #ffffff; /* White text color */
+    background-color: #6a0dad; /* Purple background */
+    padding: 10px 20px;
+    margin-right: 20px;
     border-radius: 15px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
     transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition on hover */
 }
 
-a img:hover {
+a.programming-link:hover {
     transform: scale(1.05); /* Slightly increase the size on hover */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Add a shadow on hover */
 }
