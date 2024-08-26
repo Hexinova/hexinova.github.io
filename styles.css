@@ -6,16 +6,16 @@
     font-style: normal;
 }
 
-/* Apply a global font and background color */
 body {
-    font-family: 'Proxima', sans-serif; /* Set the custom font */
-    background-color: #f0f0f0; /* Light gray background */
-    color: #333; /* Dark gray text color */
+    font-family: 'Proxima', sans-serif;
+    background: linear-gradient(135deg, #6a0dad, #000000); /* Purple to black gradient */
+    color: #333;
     margin: 0;
     padding: 20px;
     cursor: none;
     overflow: hidden;
 }
+
 
 * {
     box-sizing: border-box;
