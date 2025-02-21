@@ -12,7 +12,12 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background-color: #f4f4f4;
+            background-color: #000;
+            color: white;
+        }
+        #title {
+            font-size: 2em;
+            margin-bottom: 20px;
         }
         #key {
             font-size: 1.5em;
@@ -20,6 +25,7 @@
             padding: 10px;
             border: 1px solid #ccc;
             background-color: #fff;
+            color: black;
             width: 300px;
             text-align: center;
         }
@@ -31,7 +37,8 @@
     </style>
 </head>
 <body>
-    <div id="key">key</div>
+    <div id="title">Pico Key Gen</div>
+    <div id="key">Click the button to generate a key</div>
     <button onclick="generateKey()">Generate Key</button>
 
     <script>
