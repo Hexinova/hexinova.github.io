@@ -13,7 +13,6 @@
             justify-content: center;
             height: 100vh;
             background-color: #000 !important;
-
             color: white;
         }
         #title {
@@ -50,6 +49,15 @@
                 key += chars.charAt(Math.floor(Math.random() * chars.length));
             }
             document.getElementById("key").textContent = key;
+            
+            // Send key to a local server for retrieval
+            fetch('http://localhost:3000/store-key', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ key: key })
+            });
         }
     </script>
 </body>
