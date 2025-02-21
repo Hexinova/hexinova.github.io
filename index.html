@@ -1,24 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Key Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        #key {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            width: 300px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Your existing content -->
-        <h1>Hello World! It's star!</h1>
-        <p>An independent programmer from the Caribbean 🏝️</p>
-        
-        <h2>Programming Languages</h2>
+    <div id="key">Click the button to generate a key</div>
+    <button onclick="generateKey()">Generate Key</button>
 
-        <a href="https://www.lua.org" target="_blank">
-            <img src="images/lua.png" alt="Lua">
-        </a>
-        <a href="https://luau.org/" target="_blank">
-            <img src="images/luau.png" alt="Luau">
-        </a>
-
-        <p>Ok, you get it. I code in Roblox. Here's some of the stuff I have done:</p>
-    </div>
+    <script>
+        function generateKey() {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?";
+            let key = "";
+            for (let i = 0; i < 16; i++) {
+                key += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            document.getElementById("key").textContent = key;
+        }
+    </script>
 </body>
 </html>
