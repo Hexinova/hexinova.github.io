@@ -104,6 +104,23 @@
         padding: 1rem;
       }
     }
+
+    .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6rem; /* increased from 4rem to 6rem */
+  max-width: 800px;
+  margin: 6rem auto;
+  padding: 0 1.5rem;
+}
+
+.card {
+  margin-top: 1rem;
+  padding: 2.5rem;
+  /* keep the rest as-is */
+}
+
   </style>
 </head>
 <body>
