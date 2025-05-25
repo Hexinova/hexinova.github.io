@@ -1,1 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bliss SMP Plugin Remake</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #30363d;
+      --primary: #58a6ff;
+      --accent: #238636;
+      --text: #c9d1d9;
+      --text-muted: #8b949e;
+    }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      background-color: var(--surface);
+      padding: 2.5rem 1rem;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    header h1 {
+      color: var(--primary);
+      font-size: 2.75rem;
+      margin: 0 0 0.5rem;
+    }
+
+    header p {
+      color: var(--text-muted);
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem 2rem;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-top: 0;
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .button:hover {
+      background-color: #2ea043;
+    }
+
+    footer {
+      background-color: var(--surface);
+      text-align: center;
+      padding: 1.5rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bliss SMP Plugin Remake</h1>
+    <p>A modern plugin for PaperMC inspired by Bliss SMP mechanics</p>
+  </header>
+
+  <section>
+    <h2>✨ Features</h2>
+    <ul>
+      <li>Custom Player Perks</li>
+      <li>Lightweight and optimized</li>
+      <li>Future expansion planned</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📥 Installation</h2>
+    <ol>
+      <li>Download the plugin from GitHub Releases</li>
+      <li>Drop the JAR file into your server’s <code>/plugins</code> folder</li>
+      <li>Restart your server</li>
+    </ol>
+    <a href="https://github.com/yourusername/bliss-remake" class="button">Download on GitHub</a>
+  </section>
+
+  <section>
+    <h2>🛠 Development</h2>
+    <p>This plugin is open source and community contributions are welcome!</p>
+    <a href="https://github.com/yourusername/bliss-remake">View Source on GitHub</a>
+  </section>
+
+  <footer>
+    &copy; 2025 Bliss SMP Plugin Remake · Built with ❤️ for Minecraft
+  </footer>
+</body>
+</html>
