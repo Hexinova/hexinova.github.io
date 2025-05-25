@@ -9,7 +9,6 @@
     :root {
       --bg: #0d1117;
       --surface: rgba(255, 255, 255, 0.05);
-      --glass: rgba(255, 255, 255, 0.06);
       --border: rgba(255, 255, 255, 0.1);
       --primary: #58a6ff;
       --accent: #2ea043;
@@ -23,11 +22,12 @@
       padding: 0;
     }
 
-    body {
+    html, body {
       background: var(--bg);
       font-family: 'Inter', sans-serif;
       color: var(--text);
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
     header {
@@ -47,36 +47,40 @@
       margin-top: 0.5rem;
     }
 
-    main {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 1100px;
-      margin: 2rem auto;
-      padding: 0 2rem;
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4rem;
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
     }
 
     .card {
-      background: var(--glass);
+      background: var(--surface);
       border: 1px solid var(--border);
-      padding: 2rem;
       border-radius: 1rem;
+      padding: 2rem;
+      width: 100%;
       backdrop-filter: blur(12px);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s ease;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .card h2 {
       color: var(--primary);
-      font-size: 1.5rem;
       margin-bottom: 1rem;
     }
 
-    .card ul, .card ol {
+    ul, ol {
       padding-left: 1.2rem;
     }
 
@@ -99,21 +103,9 @@
 
     footer {
       text-align: center;
-      padding: 2rem;
+      padding: 3rem 1rem;
       color: var(--text-muted);
       font-size: 0.9rem;
-      margin-top: 3rem;
-      border-top: 1px solid var(--border);
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2.25rem;
-      }
-
-      main {
-        padding: 1rem;
-      }
     }
   </style>
 </head>
@@ -123,7 +115,7 @@
     <p>Clean, modern, and lightweight mechanics for your PaperMC server</p>
   </header>
 
-  <main>
+  <div class="container">
     <div class="card">
       <h2>✨ Features</h2>
       <ul>
@@ -148,10 +140,27 @@
       <p>This plugin is open source. Contributions are encouraged!</p>
       <a href="https://github.com/yourusername/bliss-remake" class="button">View Source</a>
     </div>
-  </main>
+  </div>
 
   <footer>
     &copy; 2025 Bliss SMP Plugin — Designed for the Minecraft Community ❤️
   </footer>
+
+  <script>
+    // Fade in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    document.querySelectorAll('.card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
 </body>
 </html>
