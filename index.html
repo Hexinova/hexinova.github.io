@@ -3,100 +3,155 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bliss SMP Plugin Remake</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <title>Bliss SMP Plugin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
+    :root {
+      --bg: #0d1117;
+      --surface: rgba(255, 255, 255, 0.05);
+      --glass: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.1);
+      --primary: #58a6ff;
+      --accent: #2ea043;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background-color: #0d1117;
-      color: #c9d1d9;
     }
+
+    body {
+      background: var(--bg);
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
     header {
-      background-color: #161b22;
-      padding: 2rem;
       text-align: center;
-      border-bottom: 1px solid #30363d;
+      padding: 4rem 2rem 2rem;
     }
+
     header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      color: #58a6ff;
+      font-size: 3rem;
+      color: var(--primary);
+      font-weight: 700;
     }
-    section {
+
+    header p {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    .card {
+      background: var(--glass);
+      border: 1px solid var(--border);
       padding: 2rem;
-      max-width: 800px;
-      margin: auto;
+      border-radius: 1rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease;
     }
-    h2 {
-      color: #79c0ff;
+
+    .card:hover {
+      transform: translateY(-5px);
     }
-    a {
-      color: #58a6ff;
-      text-decoration: none;
+
+    .card h2 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
-    a:hover {
-      text-decoration: underline;
+
+    .card ul, .card ol {
+      padding-left: 1.2rem;
     }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      color: #8b949e;
-      font-size: 0.9rem;
-      border-top: 1px solid #30363d;
-      margin-top: 3rem;
-    }
+
     .button {
       display: inline-block;
-      background-color: #238636;
+      background-color: var(--accent);
       color: white;
-      padding: 0.7rem 1.5rem;
+      padding: 0.75rem 1.25rem;
       border-radius: 8px;
       margin-top: 1rem;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
+
     .button:hover {
-      background-color: #2ea043;
+      background-color: #3dbb58;
+      transform: scale(1.03);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.25rem;
+      }
+
+      main {
+        padding: 1rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Bliss SMP Plugin Remake</h1>
-    <p>A modern remake of the original Bliss SMP mechanics for PaperMC</p>
+    <p>Clean, modern, and lightweight mechanics for your PaperMC server</p>
   </header>
 
-  <section>
-    <h2>✨ Features</h2>
-    <ul>
-      <li>Custom Player Perks & Abilities</li>
-      <li>Configurable via YAML</li>
-      <li>Lightweight and optimized for performance</li>
-    </ul>
-  </section>
+  <main>
+    <div class="card">
+      <h2>✨ Features</h2>
+      <ul>
+        <li>Custom Player Perks</li>
+        <li>Optimized for performance</li>
+        <li>Future expansion ready</li>
+      </ul>
+    </div>
 
-  <section>
-    <h2>🧩 Installation</h2>
-    <ol>
-      <li>Download the plugin JAR file from the GitHub or Releases page.</li>
-      <li>Place the JAR file into your server's <code>/plugins</code> folder.</li>
-      <li>Restart or reload the server.</li>
-      <li>Customize the config file located in <code>/plugins/BlissRemake/config.yml</code>.</li>
-    </ol>
-    <a href="https://github.com/llexuris/bliss-remake" class="button">Download on GitHub</a>
-  </section>
+    <div class="card">
+      <h2>📥 Installation</h2>
+      <ol>
+        <li>Download the JAR file from GitHub Releases</li>
+        <li>Place it in your server’s <code>/plugins</code> folder</li>
+        <li>Restart your server</li>
+      </ol>
+      <a href="https://github.com/yourusername/bliss-remake" class="button">Download on GitHub</a>
+    </div>
 
-  <section>
-    <h2>🛠 Development</h2>
-    <p>This project is open source and community contributions are welcome!</p>
-    <p>Visit the repository to report issues or submit pull requests.</p>
-    <a href="https://github.com/llexuris/bliss-remake">View Source on GitHub</a>
-  </section>
+    <div class="card">
+      <h2>🛠 Development</h2>
+      <p>This plugin is open source. Contributions are encouraged!</p>
+      <a href="https://github.com/yourusername/bliss-remake" class="button">View Source</a>
+    </div>
+  </main>
 
   <footer>
-    Made with ❤️ for the Minecraft community
+    &copy; 2025 Bliss SMP Plugin — Designed for the Minecraft Community ❤️
   </footer>
 </body>
 </html>
