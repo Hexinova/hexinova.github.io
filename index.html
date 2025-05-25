@@ -1,64 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Key Generator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #000 !important;
-            color: white;
-        }
-        #title {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-        #key {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            background-color: #fff;
-            color: black;
-            width: 300px;
-            text-align: center;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 1em;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bliss SMP Plugin Remake</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #0d1117;
+      color: #c9d1d9;
+    }
+    header {
+      background-color: #161b22;
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 1px solid #30363d;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: #58a6ff;
+    }
+    section {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    h2 {
+      color: #79c0ff;
+    }
+    a {
+      color: #58a6ff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      color: #8b949e;
+      font-size: 0.9rem;
+      border-top: 1px solid #30363d;
+      margin-top: 3rem;
+    }
+    .button {
+      display: inline-block;
+      background-color: #238636;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .button:hover {
+      background-color: #2ea043;
+    }
+  </style>
 </head>
 <body>
-    <div id="title">Pico Key Gen</div>
-    <div id="key">Click the button to generate a key</div>
-    <button onclick="generateKey()">Generate Key</button>
+  <header>
+    <h1>Bliss SMP Plugin Remake</h1>
+    <p>A modern remake of the original Bliss SMP mechanics for PaperMC</p>
+  </header>
 
-    <script>
-        function generateKey() {
-            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?";
-            let key = "";
-            for (let i = 0; i < 16; i++) {
-                key += chars.charAt(Math.floor(Math.random() * chars.length));
-            }
-            document.getElementById("key").textContent = key;
-            
-            // Send key to a local server for retrieval
-            fetch('http://localhost:3000/store-key', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ key: key })
-            });
-        }
-    </script>
+  <section>
+    <h2>✨ Features</h2>
+    <ul>
+      <li>Custom Player Perks & Abilities</li>
+      <li>Life System with Ban on Death</li>
+      <li>Peaceful Mode Toggle</li>
+      <li>Configurable via YAML</li>
+      <li>Lightweight and optimized for performance</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🧩 Installation</h2>
+    <ol>
+      <li>Download the plugin JAR file from the GitHub or Releases page.</li>
+      <li>Place the JAR file into your server's <code>/plugins</code> folder.</li>
+      <li>Restart or reload the server.</li>
+      <li>Customize the config file located in <code>/plugins/BlissRemake/config.yml</code>.</li>
+    </ol>
+    <a href="https://github.com/yourusername/bliss-remake" class="button">Download on GitHub</a>
+  </section>
+
+  <section>
+    <h2>🛠 Development</h2>
+    <p>This project is open source and community contributions are welcome!</p>
+    <p>Visit the repository to report issues or submit pull requests.</p>
+    <a href="https://github.com/yourusername/bliss-remake">View Source on GitHub</a>
+  </section>
+
+  <footer>
+    &copy; 2025 Bliss SMP Plugin Remake | Made with ❤️ for the Minecraft community
+  </footer>
 </body>
 </html>
