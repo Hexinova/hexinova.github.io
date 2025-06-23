@@ -1,1 +1,111 @@
+body {
+  background-color: #0b0b14;
+  color: white;
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+}
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+header h1 {
+  color: #caa8ff;
+}
+
+nav a {
+  margin: 0 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+.hero {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.hero h2 {
+  font-size: 3rem;
+  color: #b888ff;
+}
+
+.hero p {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  color: #cfcfcf;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin: 2rem 0;
+}
+
+.stats div {
+  text-align: center;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.btn {
+  background: #6633cc;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  margin: 0 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.section {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.section h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.section p {
+  color: #bbbbbb;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #1a1a2e;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.modal-content input {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  width: 80%;
+  border-radius: 5px;
+  border: none;
+  background-color: #333;
+  color: white;
+}
