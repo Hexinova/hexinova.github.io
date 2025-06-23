@@ -1,1 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cl4ng - Your next script executor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>cl4ng</h1>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <button class="btn" onclick="showLogin()">Log In</button>
+      <button class="btn">Register</button>
+    </nav>
+  </header>
 
+  <section class="hero">
+    <p>⚡ Your next script executor</p>
+    <h2>cl4ng</h2>
+    <p>The most reliable and powerful Windows script executor with 100% UNC & sUNC support.</p>
+    <div class="btns">
+      <button class="btn">Get Started →</button>
+      <button class="btn">Join Discord</button>
+    </div>
+    <div class="stats">
+      <div>
+        <h3>5,000+</h3>
+        <p>Users</p>
+      </div>
+      <div>
+        <h3>300+</h3>
+        <p>Custom Functions</p>
+      </div>
+      <div>
+        <h3>100%</h3>
+        <p>Script Compatibility</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>Why we have thousands of users</h3>
+    <p>Experience the most advanced scripting utility, cl4ng does it better than you've ever seen!</p>
+    <div class="btns" style="margin-top: 2rem;">
+      <button class="btn">Script Execution</button>
+      <button class="btn">Decompiler</button>
+      <button class="btn">Multi-Instance</button>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>Unmatched Script Execution</h3>
+    <p>cl4ng gives you a 100% UNC/sUNC score with extended libraries and incredible script execution. Run every script effortlessly and fast.</p>
+  </section>
+
+  <section class="section" id="pricing">
+    <h3>Pricing</h3>
+    <div class="stats">
+      <div>
+        <h3>Free</h3>
+        <p>Basic Features<br> Community Support</p>
+      </div>
+      <div>
+        <h3>$5/month</h3>
+        <p>Premium Access<br> Priority Scripts<br> Decompiler</p>
+      </div>
+      <div>
+        <h3>$20/lifetime</h3>
+        <p>Lifetime Access<br> All Features<br> VIP Support</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <h3>Log In</h3>
+      <form onsubmit="login(event)">
+        <input type="text" id="username" placeholder="Username" required /><br>
+        <input type="password" id="password" placeholder="Password" required /><br>
+        <button class="btn" type="submit">Log In</button>
+        <button class="btn" type="button" onclick="hideLogin()">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
