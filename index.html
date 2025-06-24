@@ -2,92 +2,92 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>cl4ng - Your only script executor</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShadowClient - Undetectable Minecraft Utility Mod</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f0f0f;
+      color: #f5f5f5;
+    }
+  </style>
 </head>
-<body>
-  <header>
-    <h1>cl4ng</h1>
-    <nav>
-      <a href="#features">Features</a>
-      <a href="#benefits">Benefits</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
-      <button class="btn" onclick="showLogin()">Log In</button>
-      <button class="btn">Register</button>
-    </nav>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-black/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+      <h1 class="text-2xl font-extrabold text-white">ShadowClient</h1>
+      <nav class="space-x-6 text-gray-300">
+        <a href="#features" class="hover:text-white">Features</a>
+        <a href="#download" class="hover:text-white">Download</a>
+        <a href="#pricing" class="hover:text-white">Pricing</a>
+        <a href="#support" class="hover:text-white">Support</a>
+      </nav>
+    </div>
   </header>
 
-  <section class="hero">
-    <p>⚡ Your only script executor</p>
-    <h2>cl4ng</h2>
-    <p>The most reliable and powerful Windows script executor with high sUNC, soon coming to macOS.</p>
-    <div class="btns">
-      <button class="btn">Get Started →</button>
-      <button class="btn">Join Discord</button>
-    </div>
-    <div class="stats">
+  <!-- Hero -->
+  <section class="text-center py-24 bg-gradient-to-b from-black via-neutral-900 to-black">
+    <h2 class="text-5xl font-extrabold mb-6">Undetectable Minecraft Client</h2>
+    <p class="text-gray-300 text-lg mb-8">ShadowClient offers unmatched performance and stealth for competitive PvP.</p>
+    <a href="#download" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold">Download Now</a>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-20 bg-neutral-900">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10 text-center">
       <div>
-        <h3>lots of</h3>
-        <p>Users</p>
+        <h3 class="text-xl font-bold mb-2">Bypass Anticheat</h3>
+        <p class="text-gray-400">Compatible with Watchdog, Matrix, and more.</p>
       </div>
       <div>
-        <h3>300+</h3>
-        <p>Custom Functions</p>
+        <h3 class="text-xl font-bold mb-2">Modular Design</h3>
+        <p class="text-gray-400">Enable only the features you need — no bloat.</p>
       </div>
       <div>
-        <h3>99%</h3>
-        <p>Script Compatibility</p>
+        <h3 class="text-xl font-bold mb-2">Built for PvP</h3>
+        <p class="text-gray-400">Aimbot, Reach, Velocity, and AutoClicker all tuned for legit play.</p>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <h3>Why we have lots of users</h3>
-    <p>Experience the most advanced scripting utility, cl4ng does it better than before byfron days!</p>
-    <div class="btns" style="margin-top: 2rem;">
-      <button class="btn">Script Execution</button>
-      <button class="btn">Multi-Instance</button>
-    </div>
-  </section>
-
-  <section class="section">
-    <h3>Unmatched Script Execution</h3>
-    <p>cl4ng gives you extended libraries and incredible script execution. Run every script effortlessly and fast.</p>
-  </section>
-
-  <section class="section" id="pricing">
-    <h3>Pricing</h3>
-    <div class="stats">
-      <div>
-        <h3>Free</h3>
-        <p>Basic Features<br>Key Needed</p>
-      </div>
-      <div>
-        <h3>$8/month</h3>
-        <p>Premium Access<br> Priority Scripts<br> Decompiler</p>
-      </div>
-      <div>
-        <h3>$100/lifetime</h3>
-        <p>Lifetime Access<br> All Features<br> VIP Support</p>
+  <!-- Pricing -->
+  <section id="pricing" class="py-20 bg-black">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-6">Pricing</h2>
+      <p class="text-gray-400 mb-12">Affordable plans for casual and competitive players.</p>
+      <div class="grid md:grid-cols-2 gap-6 px-6">
+        <div class="bg-neutral-800 rounded-2xl p-6 shadow-xl">
+          <h3 class="text-xl font-bold mb-2">Standard</h3>
+          <p class="text-3xl font-bold mb-4">$4.99/mo</p>
+          <ul class="text-gray-300 text-sm mb-6 space-y-1">
+            <li>✅ Access to all features</li>
+            <li>✅ Auto updates</li>
+            <li>✅ Basic support</li>
+          </ul>
+          <button class="w-full py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold">Get Started</button>
+        </div>
+        <div class="bg-neutral-800 rounded-2xl p-6 shadow-xl border border-blue-500">
+          <h3 class="text-xl font-bold mb-2">Premium</h3>
+          <p class="text-3xl font-bold mb-4">$9.99/mo</p>
+          <ul class="text-gray-300 text-sm mb-6 space-y-1">
+            <li>✅ All Standard features</li>
+            <li>✅ Premium stealth mode</li>
+            <li>✅ Priority support & updates</li>
+          </ul>
+          <button class="w-full py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold">Go Premium</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <div id="login-modal" class="modal">
-    <div class="modal-content">
-      <h3>Log In</h3>
-      <form onsubmit="login(event)">
-        <input type="text" id="username" placeholder="Username" required /><br>
-        <input type="password" id="password" placeholder="Password" required /><br>
-        <button class="btn" type="submit">Log In</button>
-        <button class="btn" type="button" onclick="hideLogin()">Cancel</button>
-      </form>
-    </div>
-  </div>
+  <!-- Footer -->
+  <footer id="support" class="py-10 bg-neutral-950 text-center text-gray-500 text-sm">
+    <p>© 2025 ShadowClient. All rights reserved. | <a class="underline" href="#">Discord Support</a></p>
+  </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
