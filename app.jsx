@@ -1,9 +1,9 @@
-// app.jsx — self-contained browser-friendly rewrite of your file
+// app.cleaned.jsx — cleaned-up, browser-friendly rewrite
 const { useState, useMemo } = React;
 const { motion } = window.FramerMotion || { motion: null };
 
 // ————————————————————————
-// Editable data (fixed a typo in docs)
+// Editable data
 const SOCIALS = [
   { name: "GitHub", url: "https://github.com/Hexinova", icon: "🐙" },
   { name: "Discord", url: "https://discord.gg/xEYt9gv6Kg", icon: "✉️" },
@@ -11,13 +11,13 @@ const SOCIALS = [
 ];
 
 const HUBS = [
-    {
+  {
     id: "nebula",
     name: "Nebula Hub",
     tagline: "Load my scripts all in one, no need to grab it from my github repositories. Along with some esp and aimbot,",
     description:
-        "Nebula auto-detects supported games, exposes a clean UI, and ships with safe toggles & anti-ban optimizations.",
-    script: 'loadstring(game:HttpGet("https://hexinova.github.io"))()',
+      "Nebula auto-detects supported games, exposes a clean UI, and ships with safe toggles & anti-ban optimizations.",
+    script: 'loadstring(game:HttpGet("https://hexinova.github.io"))()'.replace(/\)\)$/, ")()"),
     features: ["Game auto-detect", "ESP + Aimbot (legit)", "FPS friendly"],
     games: ["Blox Fruits", "Arsenal", "MM2", "BedWars"],
     stars: 4.8,
@@ -25,11 +25,11 @@ const HUBS = [
     updated: "2025-08-10",
     repo: "https://hexinova.github.io",
     docs: "https://hexinova.github.io",
-      },
-    ];
+  },
+];
 
 // ————————————————————————
-// Small UI primitives (replace shadcn/ui)
+// Small UI primitives
 function Button({ children, onClick, className = "", as = "button", href, target }) {
   if (as === "a") {
     return <a className={"btn " + className} href={href} target={target} rel="noreferrer">{children}</a>;
@@ -50,7 +50,7 @@ function formatNumber(n){ return n.toLocaleString(); }
 function copy(text){ navigator.clipboard?.writeText(text).catch(()=>{}); }
 
 // ————————————————————————
-// Small visual icon substitute (simple inline svgs or emoji)
+// Small visual icon substitute
 function Icon({ name }) {
   const map = {
     sparkles: "✨", rocket: "🚀", info: "ℹ️", copy: "📋", star: "⭐", terminal: "🖥️", download: "⬇️"
@@ -59,7 +59,7 @@ function Icon({ name }) {
 }
 
 // ————————————————————————
-// Preview panel (animated if framer-motion is available)
+// Preview panel
 function ShowcasePanel({ hub }) {
   const inner = (
     <div className="preview">
@@ -95,7 +95,7 @@ function ShowcasePanel({ hub }) {
 }
 
 // ————————————————————————
-// Main app
+// Main app — cleaned so "nefware" duplicate is removed (brand simplified)
 function Portfolio(){
   const [query,setQuery] = useState("");
   const [activeTag,setActiveTag] = useState("all");
@@ -120,9 +120,10 @@ function Portfolio(){
     <div className="container">
       <header>
         <div className="brand">
-          <div className="logo">hx</div>
+          {/* kept single brand element to avoid duplicate site-name display */}
+          <div className="logo">nf</div>
           <div>
-            <h1>hexinova’s Script Hubs</h1>
+            <div style={{fontWeight:700,fontSize:18}}>hexinova</div>
             <div style={{color:"#9aa6c2",fontSize:13}}>Built for speed, stability, and style.</div>
           </div>
         </div>
