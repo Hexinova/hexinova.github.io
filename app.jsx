@@ -11,52 +11,22 @@ const SOCIALS = [
 ];
 
 const HUBS = [
-  {
+    {
     id: "nebula",
     name: "Nebula Hub",
-    tagline: "Lightweight, fast, and game-aware script hub.",
+    tagline: "Load my scripts all in one, no need to grab it from my github repositories. Along with some esp and aimbot,",
     description:
-      "Nebula auto-detects supported games, exposes a clean UI, and ships with safe toggles & anti-ban optimizations.",
-    script: `loadstring(game:HttpGet("https://hexinova.github.io"))()`,
-    features: ["Game auto-detect", "ESP + Aimbot (legit)", "Auto-farm presets", "FPS friendly"],
+        "Nebula auto-detects supported games, exposes a clean UI, and ships with safe toggles & anti-ban optimizations.",
+    script: 'loadstring(game:HttpGet("https://hexinova.github.io"))()',
+    features: ["Game auto-detect", "ESP + Aimbot (legit)", "FPS friendly"],
     games: ["Blox Fruits", "Arsenal", "MM2", "BedWars"],
     stars: 4.8,
     installs: 18200,
     updated: "2025-08-10",
     repo: "https://hexinova.github.io",
     docs: "https://hexinova.github.io",
-  },
-  {
-    id: "aurora",
-    name: "Aurora Suite",
-    tagline: "Polished UI with per-game modules and cloud configs.",
-    description:
-      "Aurora focuses on reliability: version-locked modules, rate-limited requests, and profile-based presets you can share.",
-    script: `loadstring(game:HttpGet("https://hexinova.github.io"))()`,
-    features: ["Cloud configs", "Rate limiting", "Keybind manager", "Theming"],
-    games: ["Doors", "Bee Swarm", "Blade Ball"],
-    stars: 4.6,
-    installs: 13650,
-    updated: "2025-07-29",
-    repo: "https://hexinova.github.io",
-    docs: "https://hexinova.github.io",
-  },
-  {
-    id: "quantum",
-    name: "Quantum X",
-    tagline: "Performance-first utilities with a developer console.",
-    description:
-      "Quantum X includes a tiny event bus, debug overlay, and a safe executor shim for vendors with weird APIs.",
-    script: `loadstring(game:HttpGet("https://hexinova.github.io"))()`,
-    features: ["Debug overlay", "Event bus", "Teleport chain", "Safe waits"],
-    games: ["Phantom Forces", "Piggy"],
-    stars: 4.4,
-    installs: 9200,
-    updated: "2025-08-03",
-    repo: "https://hexinova.github.io",
-    docs: "https://hexinova.github.io",
-  },
-];
+      },
+    ];
 
 // ————————————————————————
 // Small UI primitives (replace shadcn/ui)
@@ -220,7 +190,6 @@ function Portfolio(){
             <div>© {new Date().getFullYear()} hexinova • Built with ♥</div>
             <div style={{display:"flex",gap:8}}>{SOCIALS.map(s=><a key={s.name} href={s.url} target="_blank" rel="noreferrer" style={{color:"#9aa6c2",textDecoration:"none"}}>{s.icon} {s.name}</a>)}</div>
           </div>
-          <div className="meta">This demo runs entirely in the browser (no build step). For production, use a bundler like Vite.</div>
         </footer>
       </main>
 
