@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Nebula Hub | hexinova</title>
+  <title>nefware | hexinova</title>
 
   <!-- React + ReactDOM (UMD) -->
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -59,12 +59,12 @@
       { name: "Website", url: "https://hexinova.github.io", icon: "🔗" },
     ];
 
-    const NEBULA_HUB = {
-      id: "nebula",
-      name: "Nebula Hub",
+    const NEFWARE = {
+      id: "nefware",
+      name: "nefware",
       tagline: "All-in-one game enhancement suite with ESP, Aimbot, and more",
-      description: "Nebula Hub is a comprehensive game enhancement tool that auto-detects supported games and provides a clean UI with safe toggles and anti-ban optimizations. It's designed for both performance and functionality.",
-      script: 'loadstring(game:HttpGet("https://raw.githubusercontent.com/Hexinova/NebulaHub/main/loader.lua"))()',
+      description: "nefware is a comprehensive game enhancement tool that auto-detects supported games and provides a clean UI with safe toggles and anti-ban optimizations. It's designed for both performance and functionality.",
+      script: 'loadstring(game:HttpGet("https://raw.githubusercontent.com/Hexinova/nefware/loader.lua"))()',
       features: [
         "Game auto-detection",
         "ESP (Player, Items, NPCs)",
@@ -79,8 +79,8 @@
       stars: 4.8,
       installs: 18200,
       updated: "2025-08-10",
-      repo: "https://github.com/Hexinova/NebulaHub",
-      docs: "https://github.com/Hexinova/NebulaHub/wiki",
+      repo: "https://github.com/Hexinova/nefware",
+      docs: "https://github.com/Hexinova/nefware/wiki",
     };
 
     function Button({ children, onClick, className = "", as = "button", href, target }) {
@@ -96,11 +96,11 @@
     }
     function copy(text){ navigator.clipboard?.writeText(text).catch(()=>{}); }
 
-    function NebulaPage() {
+    function nefware() {
       const [copied, setCopied] = useState(false);
 
       const handleCopy = () => {
-        copy(NEBULA_HUB.script);
+        copy(NEFWARE.script);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
       };
@@ -111,7 +111,7 @@
             <div className="brand">
               <div className="logo">hx</div>
               <div>
-                <h1>Nebula Hub</h1>
+                <h1>nefware</h1>
                 <div style={{color:"#9aa6c2",fontSize:13}}>by hexinova</div>
               </div>
             </div>
@@ -124,30 +124,30 @@
 
           <main>
             <section className="hero">
-              <h1>Nebula Hub</h1>
+              <h1>nefware</h1>
               <p>Advanced game enhancement suite with ESP, Aimbot, and performance optimizations for popular Roblox games</p>
               
               <div style={{marginTop:24,display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
                 <Button onClick={handleCopy} style={{padding:"12px 20px"}}>
                   {copied ? "✅ Copied!" : "📋 Copy Script"}
                 </Button>
-                <Button as="a" href={NEBULA_HUB.repo} target="_blank" className="ghost" style={{padding:"12px 20px"}}>
+                <Button as="a" href={NEFWARE.repo} target="_blank" className="ghost" style={{padding:"12px 20px"}}>
                   🌟 GitHub Repo
                 </Button>
-                <Button as="a" href={NEBULA_HUB.docs} target="_blank" className="ghost" style={{padding:"12px 20px"}}>
+                <Button as="a" href={NEFWARE.docs} target="_blank" className="ghost" style={{padding:"12px 20px"}}>
                   📖 Documentation
                 </Button>
               </div>
               
               <div style={{marginTop:24,maxWidth:800,marginLeft:"auto",marginRight:"auto"}}>
-                <CodeBlock code={NEBULA_HUB.script} />
+                <CodeBlock code={NEFWARE.script} />
               </div>
             </section>
 
             <section>
               <h2 style={{textAlign:"center",marginBottom:24}}>Features</h2>
               <div className="features-grid">
-                {NEBULA_HUB.features.map((feature, index) => (
+                {NEFWARE.features.map((feature, index) => (
                   <div key={index} className="feature-card">
                     <h3>{feature}</h3>
                     <p>Advanced implementation with customizable settings to suit your playstyle</p>
@@ -159,7 +159,7 @@
             <section style={{marginTop:40}}>
               <h2 style={{textAlign:"center",marginBottom:24}}>Supported Games</h2>
               <div style={{display:"flex",gap:8,justifyContent:"center",flexWrap:"wrap"}}>
-                {NEBULA_HUB.games.map(game => (
+                {NEFWARE.games.map(game => (
                   <Badge key={game} style={{padding:"8px 16px",fontSize:14}}>{game}</Badge>
                 ))}
               </div>
@@ -175,7 +175,7 @@
                   <li>Use the UI to customize your settings</li>
                 </ol>
                 <div style={{marginTop:20,textAlign:"center"}}>
-                  <Button as="a" href="https://github.com/Hexinova/NebulaHub/wiki" target="_blank" style={{padding:"12px 20px"}}>
+                  <Button as="a" href="https://github.com/Hexinova/nefware/wiki" target="_blank" style={{padding:"12px 20px"}}>
                     📚 Read Full Documentation
                   </Button>
                 </div>
@@ -184,7 +184,7 @@
 
             <footer>
               <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:12}}>
-                <div>© {new Date().getFullYear()} hexinova • Nebula Hub v2.1.4</div>
+                <div>© {new Date().getFullYear()} hexinova • nefware v1.0.0</div>
                 <div style={{display:"flex",gap:8}}>{SOCIALS.map(s=><a key={s.name} href={s.url} target="_blank" rel="noreferrer" style={{color:"#9aa6c2",textDecoration:"none"}}>{s.icon} {s.name}</a>)}</div>
               </div>
             </footer>
@@ -193,7 +193,7 @@
       );
     }
 
-    ReactDOM.createRoot(document.getElementById("root")).render(<NebulaPage />);
+    ReactDOM.createRoot(document.getElementById("root")).render(<nefware />);
   </script>
 </body>
 </html>
