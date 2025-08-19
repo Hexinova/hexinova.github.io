@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>hexinova demo</title>
+  <title>Nebula Hub | hexinova</title>
 
   <!-- React + ReactDOM (UMD) -->
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -35,7 +35,14 @@
     .badge{display:inline-block;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,0.03);font-size:12px;margin-right:6px}
     .preview{padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02)}
     footer{margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.02);color:var(--muted);font-size:13px}
-    @media (max-width:520px){ .controls { flex-direction:column; align-items:flex-start } input[type="text"]{width:100%} }
+    .hero{text-align:center;padding:40px 0}
+    .hero h1{font-size:42px;margin-bottom:12px}
+    .hero p{font-size:18px;color:#9aa6c2;max-width:700px;margin:0 auto}
+    .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:40px 0}
+    .feature-card{padding:20px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)}
+    .feature-card h3{margin-top:0}
+    .feature-card p{color:#9aa6c2}
+    @media (max-width:520px){ .controls { flex-direction:column; align-items:flex-start } input[type="text"]{width:100%} .hero h1{font-size:32px} }
   </style>
 </head>
 <body>
@@ -43,7 +50,7 @@
 
   <!-- Inline JSX compiled by Babel in the browser -->
   <script type="text/babel">
-    const { useState, useMemo } = React;
+    const { useState } = React;
     const { motion } = window.FramerMotion || { motion: null };
 
     const SOCIALS = [
@@ -52,23 +59,29 @@
       { name: "Website", url: "https://hexinova.github.io", icon: "🔗" },
     ];
 
-    const HUBS = [
-      {
-        id: "nebula",
-        name: "Nebula Hub",
-        tagline: "Load my scripts all in one, no need to grab it from my github repositories. Along with some esp and aimbot,",
-        description:
-          "Nebula auto-detects supported games, exposes a clean UI, and ships with safe toggles & anti-ban optimizations.",
-        script: 'loadstring(game:HttpGet("https://hexinova.github.io"))()',
-        features: ["Game auto-detect", "ESP + Aimbot (legit)", "FPS friendly"],
-        games: ["Blox Fruits", "Arsenal", "MM2", "BedWars"],
-        stars: 4.8,
-        installs: 18200,
-        updated: "2025-08-10",
-        repo: "https://hexinova.github.io",
-        docs: "https://hexinova.github.io",
-      },
-    ];
+    const NEBULA_HUB = {
+      id: "nebula",
+      name: "Nebula Hub",
+      tagline: "All-in-one game enhancement suite with ESP, Aimbot, and more",
+      description: "Nebula Hub is a comprehensive game enhancement tool that auto-detects supported games and provides a clean UI with safe toggles and anti-ban optimizations. It's designed for both performance and functionality.",
+      script: 'loadstring(game:HttpGet("https://raw.githubusercontent.com/Hexinova/NebulaHub/main/loader.lua"))()',
+      features: [
+        "Game auto-detection",
+        "ESP (Player, Items, NPCs)",
+        "Aimbot (legit & rage modes)",
+        "FPS friendly design",
+        "Anti-ban protections",
+        "Customizable UI",
+        "Regular updates",
+        "Performance optimizations"
+      ],
+      games: ["Blox Fruits", "Arsenal", "MM2", "BedWars", "Adopt Me", "Tower of Hell", "Jailbreak"],
+      stars: 4.8,
+      installs: 18200,
+      updated: "2025-08-10",
+      repo: "https://github.com/Hexinova/NebulaHub",
+      docs: "https://github.com/Hexinova/NebulaHub/wiki",
+    };
 
     function Button({ children, onClick, className = "", as = "button", href, target }) {
       if (as === "a") {
@@ -83,55 +96,14 @@
     }
     function copy(text){ navigator.clipboard?.writeText(text).catch(()=>{}); }
 
-    function ShowcasePanel({ hub }) {
-      const inner = (
-        <div className="preview">
-          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-            <div>
-              <h3 style={{margin:0}}>{hub.name}</h3>
-              <div style={{color:"#9aa6c2",fontSize:13}}>{hub.tagline}</div>
-            </div>
-            <div style={{textAlign:"right"}}><Badge>{hub.updated}</Badge></div>
-          </div>
-          <div style={{marginTop:10}}>
-            <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
-              {hub.features.slice(0,3).map(f => <Badge key={f}>{f}</Badge>)}
-              {hub.features.length>3 && <Badge>+{hub.features.length-3} more</Badge>}
-            </div>
-            <div style={{marginTop:8}}><CodeBlock code={hub.script} /></div>
-            <div style={{marginTop:8,display:"flex",gap:8}}>
-              <Button className="ghost" onClick={() => copy(hub.script)}>📋 Copy</Button>
-              <Button as="a" href={hub.repo} target="_blank" className="ghost">ℹ️ Repo</Button>
-            </div>
-          </div>
-        </div>
-      );
+    function NebulaPage() {
+      const [copied, setCopied] = useState(false);
 
-      if (motion && motion.div) {
-        return <motion.div initial={{opacity:0,y:8}} animate={{opacity:1,y:0}} transition={{duration:0.45}}>{inner}</motion.div>;
-      }
-      return inner;
-    }
-
-    function Portfolio(){
-      const [query,setQuery] = useState("");
-      const [activeTag,setActiveTag] = useState("all");
-      const [openHub,setOpenHub] = useState(null);
-
-      const allTags = useMemo(()=>{
-        const s = new Set(["all"]);
-        HUBS.forEach(h => h.games.forEach(g => s.add(g)));
-        return Array.from(s);
-      },[]);
-
-      const filtered = useMemo(()=>{
-        return HUBS.filter(hub => {
-          const text = (hub.name + hub.tagline + hub.description + hub.games.join(" ")).toLowerCase();
-          const matchesQuery = text.includes(query.toLowerCase());
-          const matchesTag = activeTag === "all" || hub.games.includes(activeTag);
-          return matchesQuery && matchesTag;
-        });
-      },[query,activeTag]);
+      const handleCopy = () => {
+        copy(NEBULA_HUB.script);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      };
 
       return (
         <div className="container">
@@ -139,8 +111,8 @@
             <div className="brand">
               <div className="logo">hx</div>
               <div>
-                <h1>hexinova’s Script Hubs</h1>
-                <div style={{color:"#9aa6c2",fontSize:13}}>Built for speed, stability, and style.</div>
+                <h1>Nebula Hub</h1>
+                <div style={{color:"#9aa6c2",fontSize:13}}>by hexinova</div>
               </div>
             </div>
             <nav style={{display:"flex",gap:8}}>
@@ -151,105 +123,77 @@
           </header>
 
           <main>
-            <section className="controls">
-              <input type="text" placeholder="Search hubs, games, features…" value={query} onChange={(e)=>setQuery(e.target.value)} />
-              <div style={{flex:1}} />
-              <div className="tags" aria-hidden>
-                {allTags.slice(0,6).map(t => (
-                  <Button key={t} className={activeTag===t?"":"ghost"} onClick={()=>setActiveTag(t)}>{t}</Button>
+            <section className="hero">
+              <h1>Nebula Hub</h1>
+              <p>Advanced game enhancement suite with ESP, Aimbot, and performance optimizations for popular Roblox games</p>
+              
+              <div style={{marginTop:24,display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
+                <Button onClick={handleCopy} style={{padding:"12px 20px"}}>
+                  {copied ? "✅ Copied!" : "📋 Copy Script"}
+                </Button>
+                <Button as="a" href={NEBULA_HUB.repo} target="_blank" className="ghost" style={{padding:"12px 20px"}}>
+                  🌟 GitHub Repo
+                </Button>
+                <Button as="a" href={NEBULA_HUB.docs} target="_blank" className="ghost" style={{padding:"12px 20px"}}>
+                  📖 Documentation
+                </Button>
+              </div>
+              
+              <div style={{marginTop:24,maxWidth:800,marginLeft:"auto",marginRight:"auto"}}>
+                <CodeBlock code={NEBULA_HUB.script} />
+              </div>
+            </section>
+
+            <section>
+              <h2 style={{textAlign:"center",marginBottom:24}}>Features</h2>
+              <div className="features-grid">
+                {NEBULA_HUB.features.map((feature, index) => (
+                  <div key={index} className="feature-card">
+                    <h3>{feature}</h3>
+                    <p>Advanced implementation with customizable settings to suit your playstyle</p>
+                  </div>
                 ))}
               </div>
             </section>
 
-            {filtered[0] ? <ShowcasePanel hub={filtered[0]} /> : <div style={{color:"#9aa6c2"}}>No hubs match your search</div>}
+            <section style={{marginTop:40}}>
+              <h2 style={{textAlign:"center",marginBottom:24}}>Supported Games</h2>
+              <div style={{display:"flex",gap:8,justifyContent:"center",flexWrap:"wrap"}}>
+                {NEBULA_HUB.games.map(game => (
+                  <Badge key={game} style={{padding:"8px 16px",fontSize:14}}>{game}</Badge>
+                ))}
+              </div>
+            </section>
 
-            <section id="hubs" className="grid" style={{marginTop:16}}>
-              {filtered.map((hub)=>(
-                <div key={hub.id}>
-                  <Card>
-                    <div style={{display:"flex",justifyContent:"space-between",alignItems:"start"}}>
-                      <div>
-                        <h3>{hub.name}</h3>
-                        <div style={{color:"#9aa6c2",fontSize:13}}>{hub.tagline}</div>
-                      </div>
-                      <div><Badge>{hub.updated}</Badge></div>
-                    </div>
-
-                    <p style={{color:"#9aa6c2",fontSize:13,marginTop:8}}>{hub.description}</p>
-
-                    <div style={{marginTop:10,display:"flex",flexWrap:"wrap",gap:6}}>
-                      {hub.features.slice(0,3).map(f => <Badge key={f}>{f}</Badge>)}
-                      {hub.features.length>3 && <Badge>+{hub.features.length-3} more</Badge>}
-                    </div>
-
-                    <div style={{marginTop:10}}>
-                      <div style={{fontFamily:"monospace",fontSize:13,background:"rgba(0,0,0,0.12)",padding:8,borderRadius:8}}>{hub.script}</div>
-                    </div>
-
-                    <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:10}}>
-                      <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
-                        {hub.games.map(g=> <Badge key={g}>{g}</Badge>)}
-                      </div>
-                      <div style={{display:"flex",gap:8}}>
-                        <Button className="ghost" onClick={()=>copy(hub.script)}>📋</Button>
-                        <Button onClick={()=>setOpenHub(hub)}>Details</Button>
-                      </div>
-                    </div>
-                  </Card>
+            <section style={{marginTop:40}}>
+              <h2 style={{textAlign:"center",marginBottom:24}}>Getting Started</h2>
+              <div style={{maxWidth:700,margin:"0 auto"}}>
+                <ol style={{lineHeight:1.6,paddingLeft:20}}>
+                  <li>Copy the script above</li>
+                  <li>Inject your preferred executor (e.g., Synapse, Krnl)</li>
+                  <li>Paste and execute the script in your game</li>
+                  <li>Use the UI to customize your settings</li>
+                </ol>
+                <div style={{marginTop:20,textAlign:"center"}}>
+                  <Button as="a" href="https://github.com/Hexinova/NebulaHub/wiki" target="_blank" style={{padding:"12px 20px"}}>
+                    📚 Read Full Documentation
+                  </Button>
                 </div>
-              ))}
+              </div>
             </section>
 
             <footer>
               <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:12}}>
-                <div>© {new Date().getFullYear()} hexinova • Built with ♥</div>
+                <div>© {new Date().getFullYear()} hexinova • Nebula Hub v2.1.4</div>
                 <div style={{display:"flex",gap:8}}>{SOCIALS.map(s=><a key={s.name} href={s.url} target="_blank" rel="noreferrer" style={{color:"#9aa6c2",textDecoration:"none"}}>{s.icon} {s.name}</a>)}</div>
               </div>
             </footer>
           </main>
-
-          {openHub && (
-            <div style={{position:"fixed",inset:0,display:"grid",placeItems:"center",background:"rgba(0,0,0,0.5)"}} onClick={()=>setOpenHub(null)}>
-              <div style={{width:"min(900px,95%)"}} onClick={(e)=>e.stopPropagation()}>
-                <div className="card">
-                  <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-                    <h3 style={{margin:0}}>{openHub.name}</h3>
-                    <div style={{display:"flex",gap:8}}>
-                      <Button className="ghost" onClick={()=>copy(openHub.script)}>Copy</Button>
-                      <Button className="ghost" as="a" href={openHub.repo} target="_blank">Repo</Button>
-                      <Button onClick={()=>setOpenHub(null)}>Close</Button>
-                    </div>
-                  </div>
-                  <p style={{color:"#9aa6c2",marginTop:10}}>{openHub.description}</p>
-
-                  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginTop:12}}>
-                    <div>
-                      <h4 style={{margin:"0 0 8px 0"}}>Features</h4>
-                      <div style={{display:"grid",gap:8}}>
-                        {openHub.features.map(f => <div key={f} style={{background:"rgba(255,255,255,0.03)",padding:8,borderRadius:8}}>{f}</div>)}
-                      </div>
-                    </div>
-
-                    <div>
-                      <h4 style={{margin:"0 0 8px 0"}}>Supported</h4>
-                      <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
-                        {openHub.games.map(g=> <Badge key={g}>{g}</Badge>)}
-                      </div>
-
-                      <h4 style={{margin:"10px 0 8px 0"}}>Script</h4>
-                      <CodeBlock code={openHub.script} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
         </div>
       );
     }
 
-    ReactDOM.createRoot(document.getElementById("root")).render(<Portfolio />);
+    ReactDOM.createRoot(document.getElementById("root")).render(<NebulaPage />);
   </script>
 </body>
 </html>
