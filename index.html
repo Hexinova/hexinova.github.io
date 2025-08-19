@@ -1,27 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>hexinova • script hubs (demo)</title>
+  <title>hexinova demo</title>
 
   <!-- React + ReactDOM (UMD) -->
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 
-  <!-- Framer Motion UMD -->
+  <!-- Framer Motion (optional) -->
   <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
 
-  <!-- Babel standalone to compile JSX in-browser -->
+  <!-- Babel standalone -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <style>
-    :root{
-      --bg:#0b0b11; --card:#0f1116; --muted:#98a0b3; --accent:#7c3aed;
-      --glass: rgba(255,255,255,0.03);
-    }
+    :root{--bg:#0b0b11;--card:#0f1116;--muted:#98a0b3}
     *{box-sizing:border-box}
-    body{margin:0;background:linear-gradient(180deg,#020214 0%,#0b0b11 60%);font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;color:#e6eef8}
+    body{margin:0;background:linear-gradient(180deg,#020214,#0b0b11);font-family:Inter,system-ui,Arial;color:#e6eef8}
     .container{max-width:1100px;margin:28px auto;padding:20px}
     header{display:flex;align-items:center;justify-content:space-between;padding:8px 0}
     .brand{display:flex;gap:12px;align-items:center}
@@ -35,17 +32,224 @@
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}
     .card{background:var(--card);border-radius:12px;padding:14px;border:1px solid rgba(255,255,255,0.03)}
     .card h3{margin:0 0 6px 0}
-    .badge{display:inline-block;padding:4px 8px;border-radius:999px;background:var(--glass);font-size:12px;margin-right:6px}
+    .badge{display:inline-block;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,0.03);font-size:12px;margin-right:6px}
     .preview{padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02)}
     footer{margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.02);color:var(--muted);font-size:13px}
-    .meta{font-size:13px;color:var(--muted);margin-top:8px}
     @media (max-width:520px){ .controls { flex-direction:column; align-items:flex-start } input[type="text"]{width:100%} }
   </style>
 </head>
 <body>
   <div id="root"></div>
 
-  <!-- Your compiled JSX (Babel will handle it) -->
-  <script type="text/babel" src="app.jsx"></script>
+  <!-- Inline JSX compiled by Babel in the browser -->
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+    const { motion } = window.FramerMotion || { motion: null };
+
+    const SOCIALS = [
+      { name: "GitHub", url: "https://github.com/Hexinova", icon: "🐙" },
+      { name: "Discord", url: "https://discord.gg/xEYt9gv6Kg", icon: "✉️" },
+      { name: "Website", url: "https://hexinova.github.io", icon: "🔗" },
+    ];
+
+    const HUBS = [
+      {
+        id: "nebula",
+        name: "Nebula Hub",
+        tagline: "Load my scripts all in one, no need to grab it from my github repositories. Along with some esp and aimbot,",
+        description:
+          "Nebula auto-detects supported games, exposes a clean UI, and ships with safe toggles & anti-ban optimizations.",
+        script: 'loadstring(game:HttpGet("https://hexinova.github.io"))()',
+        features: ["Game auto-detect", "ESP + Aimbot (legit)", "FPS friendly"],
+        games: ["Blox Fruits", "Arsenal", "MM2", "BedWars"],
+        stars: 4.8,
+        installs: 18200,
+        updated: "2025-08-10",
+        repo: "https://hexinova.github.io",
+        docs: "https://hexinova.github.io",
+      },
+    ];
+
+    function Button({ children, onClick, className = "", as = "button", href, target }) {
+      if (as === "a") {
+        return <a className={"btn " + className} href={href} target={target} rel="noreferrer">{children}</a>;
+      }
+      return <button className={"btn " + className} onClick={onClick}>{children}</button>;
+    }
+    function Card({ children }) { return <div className="card">{children}</div>; }
+    function Badge({ children }) { return <span className="badge">{children}</span>; }
+    function CodeBlock({ code }) {
+      return <pre style={{whiteSpace:"pre-wrap",fontSize:13,marginTop:8,background:"rgba(0,0,0,0.15)",padding:8,borderRadius:8}}><code>{code}</code></pre>;
+    }
+    function copy(text){ navigator.clipboard?.writeText(text).catch(()=>{}); }
+
+    function ShowcasePanel({ hub }) {
+      const inner = (
+        <div className="preview">
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+            <div>
+              <h3 style={{margin:0}}>{hub.name}</h3>
+              <div style={{color:"#9aa6c2",fontSize:13}}>{hub.tagline}</div>
+            </div>
+            <div style={{textAlign:"right"}}><Badge>{hub.updated}</Badge></div>
+          </div>
+          <div style={{marginTop:10}}>
+            <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
+              {hub.features.slice(0,3).map(f => <Badge key={f}>{f}</Badge>)}
+              {hub.features.length>3 && <Badge>+{hub.features.length-3} more</Badge>}
+            </div>
+            <div style={{marginTop:8}}><CodeBlock code={hub.script} /></div>
+            <div style={{marginTop:8,display:"flex",gap:8}}>
+              <Button className="ghost" onClick={() => copy(hub.script)}>📋 Copy</Button>
+              <Button as="a" href={hub.repo} target="_blank" className="ghost">ℹ️ Repo</Button>
+            </div>
+          </div>
+        </div>
+      );
+
+      if (motion && motion.div) {
+        return <motion.div initial={{opacity:0,y:8}} animate={{opacity:1,y:0}} transition={{duration:0.45}}>{inner}</motion.div>;
+      }
+      return inner;
+    }
+
+    function Portfolio(){
+      const [query,setQuery] = useState("");
+      const [activeTag,setActiveTag] = useState("all");
+      const [openHub,setOpenHub] = useState(null);
+
+      const allTags = useMemo(()=>{
+        const s = new Set(["all"]);
+        HUBS.forEach(h => h.games.forEach(g => s.add(g)));
+        return Array.from(s);
+      },[]);
+
+      const filtered = useMemo(()=>{
+        return HUBS.filter(hub => {
+          const text = (hub.name + hub.tagline + hub.description + hub.games.join(" ")).toLowerCase();
+          const matchesQuery = text.includes(query.toLowerCase());
+          const matchesTag = activeTag === "all" || hub.games.includes(activeTag);
+          return matchesQuery && matchesTag;
+        });
+      },[query,activeTag]);
+
+      return (
+        <div className="container">
+          <header>
+            <div className="brand">
+              <div className="logo">hx</div>
+              <div>
+                <h1>hexinova’s Script Hubs</h1>
+                <div style={{color:"#9aa6c2",fontSize:13}}>Built for speed, stability, and style.</div>
+              </div>
+            </div>
+            <nav style={{display:"flex",gap:8}}>
+              {SOCIALS.map(s=>(
+                <Button key={s.name} as="a" href={s.url} target="_blank" className="ghost">{s.icon} {s.name}</Button>
+              ))}
+            </nav>
+          </header>
+
+          <main>
+            <section className="controls">
+              <input type="text" placeholder="Search hubs, games, features…" value={query} onChange={(e)=>setQuery(e.target.value)} />
+              <div style={{flex:1}} />
+              <div className="tags" aria-hidden>
+                {allTags.slice(0,6).map(t => (
+                  <Button key={t} className={activeTag===t?"":"ghost"} onClick={()=>setActiveTag(t)}>{t}</Button>
+                ))}
+              </div>
+            </section>
+
+            {filtered[0] ? <ShowcasePanel hub={filtered[0]} /> : <div style={{color:"#9aa6c2"}}>No hubs match your search</div>}
+
+            <section id="hubs" className="grid" style={{marginTop:16}}>
+              {filtered.map((hub)=>(
+                <div key={hub.id}>
+                  <Card>
+                    <div style={{display:"flex",justifyContent:"space-between",alignItems:"start"}}>
+                      <div>
+                        <h3>{hub.name}</h3>
+                        <div style={{color:"#9aa6c2",fontSize:13}}>{hub.tagline}</div>
+                      </div>
+                      <div><Badge>{hub.updated}</Badge></div>
+                    </div>
+
+                    <p style={{color:"#9aa6c2",fontSize:13,marginTop:8}}>{hub.description}</p>
+
+                    <div style={{marginTop:10,display:"flex",flexWrap:"wrap",gap:6}}>
+                      {hub.features.slice(0,3).map(f => <Badge key={f}>{f}</Badge>)}
+                      {hub.features.length>3 && <Badge>+{hub.features.length-3} more</Badge>}
+                    </div>
+
+                    <div style={{marginTop:10}}>
+                      <div style={{fontFamily:"monospace",fontSize:13,background:"rgba(0,0,0,0.12)",padding:8,borderRadius:8}}>{hub.script}</div>
+                    </div>
+
+                    <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:10}}>
+                      <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
+                        {hub.games.map(g=> <Badge key={g}>{g}</Badge>)}
+                      </div>
+                      <div style={{display:"flex",gap:8}}>
+                        <Button className="ghost" onClick={()=>copy(hub.script)}>📋</Button>
+                        <Button onClick={()=>setOpenHub(hub)}>Details</Button>
+                      </div>
+                    </div>
+                  </Card>
+                </div>
+              ))}
+            </section>
+
+            <footer>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:12}}>
+                <div>© {new Date().getFullYear()} hexinova • Built with ♥</div>
+                <div style={{display:"flex",gap:8}}>{SOCIALS.map(s=><a key={s.name} href={s.url} target="_blank" rel="noreferrer" style={{color:"#9aa6c2",textDecoration:"none"}}>{s.icon} {s.name}</a>)}</div>
+              </div>
+            </footer>
+          </main>
+
+          {openHub && (
+            <div style={{position:"fixed",inset:0,display:"grid",placeItems:"center",background:"rgba(0,0,0,0.5)"}} onClick={()=>setOpenHub(null)}>
+              <div style={{width:"min(900px,95%)"}} onClick={(e)=>e.stopPropagation()}>
+                <div className="card">
+                  <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                    <h3 style={{margin:0}}>{openHub.name}</h3>
+                    <div style={{display:"flex",gap:8}}>
+                      <Button className="ghost" onClick={()=>copy(openHub.script)}>Copy</Button>
+                      <Button className="ghost" as="a" href={openHub.repo} target="_blank">Repo</Button>
+                      <Button onClick={()=>setOpenHub(null)}>Close</Button>
+                    </div>
+                  </div>
+                  <p style={{color:"#9aa6c2",marginTop:10}}>{openHub.description}</p>
+
+                  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginTop:12}}>
+                    <div>
+                      <h4 style={{margin:"0 0 8px 0"}}>Features</h4>
+                      <div style={{display:"grid",gap:8}}>
+                        {openHub.features.map(f => <div key={f} style={{background:"rgba(255,255,255,0.03)",padding:8,borderRadius:8}}>{f}</div>)}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 style={{margin:"0 0 8px 0"}}>Supported</h4>
+                      <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
+                        {openHub.games.map(g=> <Badge key={g}>{g}</Badge>)}
+                      </div>
+
+                      <h4 style={{margin:"10px 0 8px 0"}}>Script</h4>
+                      <CodeBlock code={openHub.script} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<Portfolio />);
+  </script>
 </body>
 </html>
