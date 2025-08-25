@@ -1,1 +1,175 @@
-Website under renovations, come back later!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jasper — Luau Developer</title>
+  <meta name="description" content="Portfolio for Jasper, a Luau (Roblox) developer: projects, skills, experience, contact." />
+  <meta name="theme-color" content="#ffffff" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans",Ubuntu,"Helvetica Neue",sans-serif;line-height:1.55;background:#ffffff;color:#0b1020}
+    img,video{max-width:100%;display:block;border-radius:12px}
+    a{color:inherit;text-decoration:none}
+    :root{
+      --bg:#ffffff;
+      --panel:#f8f8f8;
+      --muted:#495060;
+      --brand:#7c3aed; /* purple */
+      --brand-2:#4c1d95; /* darker purple */
+      --shadow:0 10px 25px rgba(0,0,0,.08);
+      --radius:18px;
+    }
+
+    .container{width:min(1100px, 92vw);margin-inline:auto}
+    .grid{display:grid;gap:24px}
+    .two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .three{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width:900px){.two,.three{grid-template-columns:1fr}}
+    .card{background:var(--panel);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.06)}
+    .muted{color:var(--muted)}
+    .tag{display:inline-flex;align-items:center;gap:8px;padding:.4rem .7rem;border-radius:999px;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);font-size:.85rem}
+    .btn{display:inline-flex;gap:.6rem;align-items:center;padding:.85rem 1.1rem;border-radius:12px;border:1px solid rgba(0,0,0,.12);background:linear-gradient(180deg, rgba(124,58,237,.9), rgba(124,58,237,.7));color:#fff;cursor:pointer;transition:transform .08s ease, box-shadow .2s ease}
+    .btn:hover{box-shadow:0 10px 20px rgba(124,58,237,.25)}
+    .btn:active{transform:translateY(1px)}
+    .pill{padding:.45rem .75rem;border-radius:999px;border:1px solid rgba(0,0,0,.08);font-size:.85rem}
+
+    header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid rgba(0,0,0,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:.8rem}
+    .logo{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:radial-gradient(100% 100% at 50% 0%, var(--brand), var(--brand-2));box-shadow:0 8px 22px rgba(124,58,237,.25)}
+    .logo svg{filter:drop-shadow(0 2px 5px rgba(0,0,0,.3))}
+    .nav .actions{display:flex;gap:.6rem}
+
+    .hero{padding:64px 0 32px}
+    .hero .inner{display:grid;grid-template-columns:1.25fr .75fr;gap:28px}
+    @media (max-width:900px){.hero .inner{grid-template-columns:1fr}}
+    .hero h1{font-size:clamp(2rem, 4vw + 1rem, 3rem);line-height:1.1;margin:0}
+    .hero p{margin:.9rem 0 0;font-size:1.05rem}
+
+    section{padding:38px 0}
+    section h2{font-size:1.6rem;margin:0 0 14px}
+
+    .project{display:flex;flex-direction:column}
+    .project .thumb{aspect-ratio:16/9;background:#f0f0f0;border-bottom:1px solid rgba(0,0,0,.08)}
+    .project .body{padding:14px}
+    .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+
+    footer{padding:40px 0;border-top:1px solid rgba(0,0,0,.06);margin-top:24px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 5h9l5 5v9H5V5z" stroke="white" stroke-width="2"/>
+            <path d="M14 5v5h5" stroke="white" stroke-width="2"/>
+          </svg>
+        </div>
+        <div>
+          <strong>Jasper</strong><br>
+          <span class="muted" style="font-size:.9rem">Luau (Roblox) Developer</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container hero">
+    <div class="inner">
+      <div>
+        <h1>Hi, I'm Jasper — I build smooth gameplay systems and clean developer tooling.</h1>
+        <p class="muted">I design gameplay loops, services, and tooling for Roblox experiences using Luau.</p>
+        <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn" href="https://github.com/Hexinova" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="grid two">
+        <article class="project card">
+          <div class="thumb">
+            <video controls poster="thumbnail1.jpg">
+              <source src="demo1.mp4" type="video/mp4">
+              Your browser does not support video.
+            </video>
+          </div>
+          <div class="body">
+            <div class="title">Roblox Leveling System (Luau)</div>
+            <p class="muted">Modular XP/quests with datastores, rate‑limits, and UI hooks.</p>
+          </div>
+        </article>
+        <article class="project card">
+          <div class="thumb">
+            <video controls poster="thumbnail2.jpg">
+              <source src="demo2.mp4" type="video/mp4">
+              Your browser does not support video.
+            </video>
+          </div>
+          <div class="body">
+            <div class="title">Roblox Anticheat Framework</div>
+            <p class="muted">Detection for exploit injections, fly/speed hacks, and suspicious events.</p>
+          </div>
+        </article>
+        <article class="project card">
+          <div class="thumb">
+            <video controls poster="thumbnail3.jpg">
+              <source src="demo3.mp4" type="video/mp4">
+              Your browser does not support video.
+            </video>
+          </div>
+          <div class="body">
+            <div class="title">Survival Game Prototype</div>
+            <p class="muted">Resource gathering, hunger/thirst mechanics, and base‑building systems.</p>
+          </div>
+        </article>
+        <article class="project card">
+          <div class="thumb">
+            <video controls poster="thumbnail4.jpg">
+              <source src="demo4.mp4" type="video/mp4">
+              Your browser does not support video.
+            </video>
+          </div>
+          <div class="body">
+            <div class="title">Custom Quest System</div>
+            <p class="muted">Dynamic quest editor with progression tracking and reward integration.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="card" style="padding:16px">
+        <ul>
+          <li>📧 <a href="mailto:hello@jasperr.xyz">hello@jasperr.xyz</a></li>
+          <li>🐙 <a href="https://github.com/Hexinova" target="_blank" rel="noopener">github.com/Hexinova</a></li>
+          <li>💬 Discord: <code>@yourhandle</code></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Jasper · jasperr.xyz
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
