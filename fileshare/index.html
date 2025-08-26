@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FileShare</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #111;
+      color: #fff;
+      padding: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+    }
+    .item {
+      cursor: pointer;
+      text-align: center;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+    .copied {
+      color: lime;
+      font-size: 0.9em;
+      margin-top: 5px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Fileshare</h1>
+  <div class="grid" id="fileGrid"></div>
+
+  <script>
+    // Put all your filenames here (they must exist in /fileshare/)
+    const files = [
+      "image1.png",
+      "image2.jpg",
+      "funny.gif",
+      "another.gif"
+    ];
+
+    const grid = document.getElementById("fileGrid");
+
+    files.forEach(file => {
+      const url = `${window.location.origin}/fileshare/${file}`;
+      const item = document.createElement("div");
+      item.className = "item";
+      item.innerHTML = `
+        <img src="${url}" alt="${file}">
+        <div>${file}</div>
+        <div class="copied">Copied!</div>
+      `;
+      item.onclick = async () => {
+        await navigator.clipboard.writeText(url);
+        const copiedEl = item.querySelector(".copied");
+        copiedEl.style.display = "block";
+        setTimeout(() => copiedEl.style.display = "none", 1200);
+      };
+      grid.appendChild(item);
+    });
+  </script>
+</body>
+</html>
