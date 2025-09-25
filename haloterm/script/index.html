@@ -1,0 +1,102 @@
+-- yes its open source
+local UserInputService = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+
+local Player = Players.LocalPlayer
+local Character = Player.Character or Player.CharacterAdded:Wait()
+local Humanoid = Character:WaitForChild("Humanoid")
+local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local haloterm = Instance.new("ScreenGui")
+local CommandBar = Instance.new("TextBox")
+local UICorner = Instance.new("UICorner")
+local CommandBarShadow = Instance.new("ImageLabel")
+
+--Properties:
+
+haloterm.Name = "haloterm"
+haloterm.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+haloterm.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+haloterm.ResetOnSpawn = false
+
+CommandBar.Name = "CommandBar"
+CommandBar.Parent = haloterm
+CommandBar.AnchorPoint = Vector2.new(0.5, 0.5)
+CommandBar.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+CommandBar.BorderColor3 = Color3.fromRGB(0, 0, 0)
+CommandBar.BorderSizePixel = 0
+CommandBar.Position = UDim2.new(0.5, 0, 0.5, 0)
+CommandBar.Size = UDim2.new(0, 800, 0, 50)
+CommandBar.Font = Enum.Font.SourceSans
+CommandBar.Text = ""
+CommandBar.TextColor3 = Color3.fromRGB(255, 255, 255)
+CommandBar.TextScaled = true
+CommandBar.TextSize = 14.000
+CommandBar.TextWrapped = true
+CommandBar.PlaceholderText = "Enter Command..."
+CommandBar.Visible = false
+
+UICorner.CornerRadius = UDim.new(0, 16)
+UICorner.Parent = CommandBar
+
+CommandBarShadow.Name = "CommandBarShadow"
+CommandBarShadow.Parent = CommandBar
+CommandBarShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+CommandBarShadow.BackgroundTransparency = 1.000
+CommandBarShadow.Position = UDim2.new(0.5, 0, 0.5, 2)
+CommandBarShadow.Size = UDim2.new(1, 122, 1, 122)
+CommandBarShadow.ZIndex = 0
+CommandBarShadow.Image = "rbxassetid://12817567427"
+CommandBarShadow.ImageTransparency = 0.500
+CommandBarShadow.ScaleType = Enum.ScaleType.Slice
+CommandBarShadow.SliceCenter = Rect.new(85, 85, 427, 427)
+
+local functions = {}
+
+functions.rspy = function()
+    loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpyBeta.lua"))()
+end
+
+functions.dex = function()
+    loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/infyiff/backup/main/dex.lua"))()
+end
+
+functions.copypos = function()
+    -- rounding it
+    setclipboard(math.floor(HumanoidRootPart.CFrame.X) .. ", " .. math.floor(HumanoidRootPart.CFrame.Y) .. ", " .. math.floor(HumanoidRootPart.CFrame.Z))
+end
+
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    if input.KeyCode == Enum.KeyCode.Semicolon and not gameProcessed then
+        CommandBar.Visible = true
+        CommandBar:CaptureFocus()
+    end
+
+    if input.KeyCode == Enum.KeyCode.End then
+        haloterm:Destroy()
+    end
+end)
+
+CommandBar.FocusLost:Connect(function(enterPressed)
+    if enterPressed then
+        local command = CommandBar.Text
+        CommandBar.Visible = false
+        -- Execute command
+        -- remove ; from the start if it exists
+        if command:sub(1, 1) == ";" then
+            command = command:sub(2)
+        end
+        local func = functions[command:lower()]
+        if func then
+            func()
+        else
+            print("Command not found: " .. command)
+        end
+        
+    end
+end)
