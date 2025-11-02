@@ -1,1 +1,197 @@
-Site under construction.
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jasper — Portfolio | jasperr.xyz</title>
+  <meta name="description" content="Portfolio of Jasper — Lua developer, game designer, and UI/UX enthusiast." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#7c3aed;
+      --glass: rgba(255,255,255,0.04);
+      color-scheme: dark;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{background:linear-gradient(180deg,#071024 0%, var(--bg) 100%); color:#e6eef8; -webkit-font-smoothing:antialiased;}
+    .container{max-width:1100px;margin:40px auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo img{width:56px;height:56px;border-radius:12px;box-shadow:0 6px 18px rgba(124,58,237,0.18);object-fit:cover;}
+    nav{display:flex;gap:12px;align-items:center}
+    a.btn{padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.06);text-decoration:none;color:var(--muted);font-weight:600}
+    a.primary{background:linear-gradient(90deg,var(--accent),#3b82f6);color:white;border:none}
+
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;margin-top:34px;align-items:center}
+    .intro h1{font-size:38px;margin:0 0 10px 0;line-height:1.02}
+    .intro p{color:var(--muted);margin:0 0 18px}
+    .cta{display:flex;gap:12px}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015));padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+    .stats{display:flex;gap:12px}
+    .stat{flex:1;text-align:center}
+    .stat strong{display:block;font-size:18px}
+    .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .skill{padding:8px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.04);font-weight:600;color:var(--muted)}
+    footer{margin-top:48px;text-align:center;color:var(--muted);font-size:14px}
+
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .logo img{width:48px;height:48px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo"><img src="https://i.imgur.com/Mr4FYFP.png" alt="Jasper Logo"/></div>
+        <div>
+          <div style="font-weight:700">Jasper</div>
+          <div style="font-size:12px;color:var(--muted)">jasperr.xyz</div>
+        </div>
+      </div>
+      <nav>
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#about">About</a>
+        <a class="btn" href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="hero">
+      <section class="intro">
+        <h1>Hey, I'm Jasper. I design and make games and UI.</h1>
+        <p>I’m a Lua developer and designer focused on creating fun, visually clean, and smooth gameplay experiences. I enjoy crafting polished interfaces, improving user flow, and experimenting with new game ideas.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">See my work</a>
+          <a class="btn" href="mailto:hello@jasperr.xyz">Hire / Collaborate</a>
+        </div>
+
+        <div class="card" style="margin-top:20px">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div>
+              <div style="font-weight:700">Current focus</div>
+              <div style="color:var(--muted);margin-top:6px">Creating games with engaging gameplay and smooth, intuitive UI/UX on Roblox.</div>
+            </div>
+            <div style="text-align:right;color:var(--muted)">
+              <div style="font-weight:700">Open to work</div>
+              <div style="font-size:12px">Freelance · Contract · Collabs</div>
+            </div>
+          </div>
+
+          <div class="stats" style="margin-top:12px">
+            <div class="stat">
+              <strong>0</strong>
+              <div style="color:var(--muted);font-size:13px">Projects shipped</div>
+            </div>
+            <div class="stat">
+              <strong>5 yrs</strong>
+              <div style="color:var(--muted);font-size:13px">Experience</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <div style="font-weight:700;margin-bottom:8px">Skills</div>
+            <div class="skills">
+              <span class="skill">Lua (Roblox)</span>
+              <span class="skill">Game Design</span>
+              <span class="skill">UI/UX</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside>
+        <div class="card">
+          <div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+            <img src="https://i.imgur.com/Mr4FYFP.png" alt="Jasper Avatar" style="width:120px;height:120px;border-radius:50%;display:block;object-fit:cover"/>
+            <div style="font-weight:700">Jasper</div>
+            <div style="color:var(--muted);font-size:13px">Lua Dev • Game Design • UI/UX</div>
+            <div style="width:100%;margin-top:12px;display:flex;gap:8px">
+              <a class="btn" href="https://www.roblox.com/users/410465326/profile" target="_blank">Roblox</a>
+              <a class="btn" href="https://www.roblox.com/communities/35502289/25starred-productions#!/about" target="_blank">Roblox Group</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <div style="font-weight:700">Contact</div>
+          <div style="color:var(--muted);font-size:13px;margin-top:8px">Available for freelance & contract work. Send a quick note — I reply within a couple of days.</div>
+          <a class="btn" href="mailto:hello@jasperr.xyz" style="display:block;margin-top:12px;text-align:center">Email me</a>
+        </div>
+      </aside>
+    </main>
+
+    <section id="projects" class="card" style="margin-top:28px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-weight:800;font-size:18px">Projects</div>
+        <div style="color:var(--muted);font-size:13px">Work in progress — FPS System</div>
+      </div>
+
+      <div class="projects">
+        <article class="card">
+          <h3 style="margin-top:0">FPS System (In Development)</h3>
+          <p style="color:var(--muted)">A custom Roblox FPS system featuring recoil, sprinting, dynamic camera sway, and modular weapon setup — focused on clean UI/UX and feel.</p>
+          <div style="margin-top:10px;display:flex;gap:8px">
+            <a class="btn" href="#">Preview</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="card" style="margin-top:18px">
+      <div style="display:flex;gap:18px;align-items:flex-start">
+        <div style="flex:1">
+          <h3 style="margin-top:0">About me</h3>
+          <p style="color:var(--muted)">I’ve been making games for about 5 years, mainly scripting in Lua inside Roblox Studio. My main focus is building engaging gameplay and UI/UX. Outside of coding, I enjoy gaming and exploring new game concepts.</p>
+
+          <ul style="color:var(--muted)">
+            <li>Favorite stack: Lua (Roblox)</li>
+            <li>Tools: Roblox Studio, VS Code, Git</li>
+            <li>Outside coding: gaming and experimenting with design ideas</li>
+          </ul>
+        </div>
+        <div style="width:220px">
+          <div style="font-weight:700">Quick facts</div>
+          <div style="color:var(--muted);margin-top:8px">
+            <div><strong>Location:</strong> Barbados</div>
+            <div><strong>Availability:</strong> Freelance / Part-time</div>
+            <div><strong>Email:</strong> hello@jasperr.xyz</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="card" style="margin-top:18px">
+      <h3 style="margin-top:0">Get in touch</h3>
+      <p style="color:var(--muted)">Send a quick email — I’m open to freelance, collab, or contract work.</p>
+
+      <form action="mailto:hello@jasperr.xyz" method="post" enctype="text/plain">
+        <div style="display:flex;gap:8px;flex-direction:column">
+          <input name="name" placeholder="Your name" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
+          <input name="email" placeholder="Your email" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
+          <textarea name="message" placeholder="Short description" rows="4" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"></textarea>
+          <div style="display:flex;gap:8px">
+            <button class="btn primary" type="submit">Email me</button>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Jasper — <a href="https://jasperr.xyz" style="color:var(--muted);text-decoration:none">jasperr.xyz</a></div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
